@@ -1,0 +1,10 @@
+@import '../../styles/mixins/anchor-reset';
+@import '../../styles/mixins/button-reset';
+
+.link {
+  @include anchor-reset;
+}
+
+.button {
+  @include button-reset;
+}
