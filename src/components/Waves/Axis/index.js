@@ -1,34 +1,12 @@
-import React, { useEffect, useCallback, useRef } from 'react'
-import NoSSR from 'react-no-ssr'
-import dynamic from 'next/dynamic'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
+import SineWaves from 'sine-waves'
 import { easeInOutQuad } from 'utils'
-import styles from './axis.module.scss'
-
-let ssr = true
-
-function useHookWithRefCallback() {
-  const canvasRef = useRef(null)
-  const setRef = useCallback(node => {
-    if (canvasRef.current) {
-      // Make sure to cleanup any events/references added to the last instance
-    }
-    
-    if (node) {
-      // Check if a node is actually passed. Otherwise node would be null.
-      // You can now do what you need to, addEventListeners, measure, etc.
-      canvasRef.current = node
-      return canvasRef.current
-    }
-    
-    // Save a reference to the node
-    canvasRef.current = node
-  }, [])
-  
-  return [setRef]
-}
+import styles from '../waves.module.scss'
 
 const Axis = ({ qty, maxShift, yEase, maxAmp, wLength }) => {
+  const canvasRef = useRef()
+
   const makeWaves = () => {
     let waves = []
     for (let i = 0; i < qty; i++) {
@@ -43,36 +21,19 @@ const Axis = ({ qty, maxShift, yEase, maxAmp, wLength }) => {
     return waves;
   }
 
-  const initWaves = (waves, node) => {
+  const initWaves = () => {
     new SineWaves({
-      el: node,
+      el: canvasRef.current,
       speed: 2,
       rotate: 90,
       ease: 'SineInOut',
-      waves: waves,
-      initialize: function (){console.log('event-ed')},
+      waves: makeWaves(),
     })
   }
 
-  const [canvasRef] = useHookWithRefCallback()
-
-  const SineWaves = dynamic(
-    () => {
-      ssr = !ssr
-      import('sine-waves'),
-    
-      const callback = useCallback(
-    
-      )
-    },
-    { ssr: false }
-  )
-
   useEffect(() => {
-    if (SineWaves) {
-      console.log(canvasRef())
-    }
-  }, [SineWaves])
+    initWaves()
+  })
 
   return (
     <canvas ref={canvasRef} className={styles.canvas}/>

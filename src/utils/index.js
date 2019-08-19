@@ -1,5 +1,5 @@
 export { default as className } from './className'
-export { easeInOutQuad as easeInOutQuad } from './easings'
-export { easeInOutCubic as easeInOutCubic } from './easings'
-export { easeInOutQuint as easeInOutQuint } from './easings'
+export { easeInOutQuad } from './easings'
+export { easeInOutCubic } from './easings'
+export { easeInOutQuint } from './easings'
 export { default as makeWaves } from './makeWaves'

@@ -1,21 +1,39 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Detail, Master } from 'components'
+import { Route , Switch} from 'react-router-dom'
+import { Detail, Master, Axis, Field } from 'components'
+import { easeInOutQuad, easeInOutQuint } from 'utils'
 import styles from './layout.module.scss'
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <main className={styles.main}>
       <Master />
       <Detail>
-        {children}
+        <Switch>
+          <Route exact path='/' render={() => (
+            <Axis
+              qty={20}
+              maxShift={0}
+              yEase={easeInOutQuad}
+              maxAmp={600}
+              wLength={250}
+            />
+          )}/>
+          <Route exact path='/field' render={() => (
+            <Field
+              qty={11}
+              yEase={easeInOutQuad}
+              maxAmp={500}
+              ampEase={easeInOutQuad}
+              wLength={900}
+              maxWidth={20}
+              widthEase={easeInOutQuint}
+            />
+          )}/>
+        </Switch>
       </Detail>
     </main>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
