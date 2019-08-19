@@ -1,0 +1,16 @@
+.master {
+  background-color: $gray-80;
+  box-sizing: border-box;
+  color: white;
+  flex: 1;
+  height: 100vh;
+  padding: ms(3);
+}
+
+.pages-list {
+  @include ul-reset;
+}
+
+.active {
+  color: $azure;
+}

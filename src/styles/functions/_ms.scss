@@ -1,0 +1,3 @@
+@function ms($steps, $base: $ms-base, $ratio: $ms-ratio) {
+  @return $base * power($ratio, $steps);
+}

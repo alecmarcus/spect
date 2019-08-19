@@ -1,0 +1,6 @@
+@mixin button {
+  @include button-reset;
+  background: $gray-0;
+  padding: ms(-4) ms(-2);
+  border-radius: 2px;
+}
