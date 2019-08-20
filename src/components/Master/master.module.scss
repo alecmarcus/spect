@@ -1,3 +1,4 @@
+@import '../../styles/functions/ms';
 @import '../../styles/mixins/ul-reset';
 @import '../../styles/variables/colors';
 
@@ -7,6 +8,7 @@
   color: #ffffff;
   flex: 1;
   height: 100vh;
+  min-width: ms(12);
   padding: ms(3);
 }
 
