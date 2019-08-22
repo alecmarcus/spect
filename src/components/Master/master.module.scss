@@ -5,10 +5,10 @@
 .master {
   background-color: $gray-80;
   box-sizing: border-box;
-  color: #ffffff;
+  color: white;
   flex: 1;
   height: 100vh;
-  min-width: ms(12);
+  min-width: ms(13);
   padding: ms(3);
 }
 
@@ -17,5 +17,5 @@
 }
 
 .active {
-  color: $azure;
+  color: $light-blue;
 }

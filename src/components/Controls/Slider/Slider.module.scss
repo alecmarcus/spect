@@ -1,3 +1,4 @@
+@import '../../../styles/mixins/label-text';
 @import '../../../styles/mixins/transitions';
 @import '../../../styles/functions/ms';
 @import '../../../styles/variables/colors';
@@ -15,20 +16,24 @@ $thumb-size: 3.5 * $track-height;
 }
 
 .label {
-  flex: none;
-  width: 100%;
+  @include label-text;
+  @include transition;
+  margin: ms(-9);
 }
 
 .maxxed {
+  .label,
+  .slider::-webkit-slider-thumb,
   .value {
-    background-color: $ultramarine;
-    color: white;
+    color: $ultramarine;
   }
 }
 
 .minned {
+  .label,
+  .slider::-webkit-slider-thumb,
   .value {
-    background-color: $gray-30;
+    color: $gray-40;
   }
 }
 
@@ -48,7 +53,7 @@ $thumb-size: 3.5 * $track-height;
     background-color: currentColor;
     border: 2px solid currentColor;
     border-radius: 100%;
-    color: $ultramarine;
+    color: $light-blue;
     height: $thumb-size;
     position: relative;
     transform-origin: center;
@@ -96,19 +101,26 @@ $thumb-size: 3.5 * $track-height;
 }
 
 .value {
+  @include transition;
   appearance: none;
-  background-color: white;
+  background-color: transparent;
   border: 0;
-  border-radius: 3px;
-  color: $black-coral;
+  border-radius: 2px;
+  color: white;
   flex: none;
   font-size: ms(-1);
   height: ms(2);
   line-height: ms(1);
-  margin-right: ms(-2);
+  margin: 2px 0 0 ms(-4);
   padding: 0 ms(-4) 0;
   text-align: center;
-  width: ms(0);
+  width: ms(2);
+
+  &:focus {
+    background-color: white;
+    color: $black-coral;
+    outline: 0;
+  }
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

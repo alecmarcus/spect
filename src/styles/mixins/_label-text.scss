@@ -1,0 +1,7 @@
+@mixin label-text {
+  flex: none;
+  font-size: ms(-2);
+  letter-spacing: ms(-15);
+  text-transform: uppercase;
+  width: 100%;
+}

@@ -1,0 +1,121 @@
+@import '../../../styles/mixins/label-text';
+@import '../../../styles/mixins/transitions';
+@import '../../../styles/mixins/button-reset';
+@import '../../../styles/mixins/ul-reset';
+@import '../../../styles/functions/ms';
+@import '../../../styles/variables/colors';
+
+$option-padding: ms(-4) ms(-2) ms(-3);
+
+.customOptionButton {
+  @include button-reset;
+  color: $gray-90;
+  height: 100%;
+  padding: $option-padding;
+  text-align: left;
+  width: 100%;
+}
+
+.customOptionButton,
+.select {
+  @include transition;
+
+  &:hover {
+    background-color: $ultramarine;
+    color: white;
+  }
+}
+
+.customOptionList {
+  @include transition(
+    $property: (
+      opacity,
+      height,
+    ),
+    $duration: 200ms
+  );
+  @include ul-reset;
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  flex-flow: column;
+  font-size: ms(-1);
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  transition-delay: 0.1s;
+  width: 100%;
+  z-index: 1;
+}
+
+.customOptionWrapper {
+  @include transition($property: top, $duration: 200ms);
+  height: ms(3);
+  position: absolute;
+  top: ms(3);
+  width: 100%;
+
+  &.selected {
+    top: 0;
+  }
+}
+
+.label {
+  @include label-text;
+  display: block;
+  margin-bottom: ms(-4);
+}
+
+.OSoption {
+  display: none;
+}
+
+.select {
+  appearance: none;
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: ms(-1);
+  padding: $option-padding;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+
+  &:focus {
+    outline: 0;
+
+    + .customOptionList {
+      height: 2 * ms(3);
+      opacity: 1;
+    }
+  }
+}
+
+.wrapper {
+  height: ms(3);
+  position: relative;
+
+  &::after {
+    color: $gray-40;
+    content: '•••';
+    height: 100%;
+    line-height: 1.7;
+    pointer-events: none;
+    position: absolute;
+    right: ms(-3);
+    top: 0;
+    z-index: 3;
+  }
+
+  &:focus-within {
+    &::after {
+      color: $gray-80;
+    }
+  }
+}
+
+:export {
+  varOptionHeight: ms($steps: 3, $base: 1);
+}

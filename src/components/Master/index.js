@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { Link, ViewContext, Radio, Select, Slider } from 'components';
-import styles from './master.module.scss'
+import styles from './master.module.scss';
 
 const Master = () => {
-  const [state, setState] = useContext(ViewContext)
+  const [state, setState] = useContext(ViewContext);
 
   return (
     <div className={styles.master}>
@@ -35,7 +35,7 @@ const Master = () => {
               displayText: 'Another Thing',
               optValue: 'anotherThing',
               valueText: 'anotherThing',
-            },
+            }
           ]
         }
         property={'someThings'}
@@ -53,7 +53,7 @@ const Master = () => {
             {
               displayText: 'Another Thing',
               optValue: 'anotherThing',
-            },
+            }
           ]
         }
         property={'moreThings'}
@@ -61,13 +61,13 @@ const Master = () => {
       <Slider
         defaultVal={4}
         labelText={'A range of things'}
-        max={10}
+        max={100}
         min={0}
         property={'aRangeOfThings'}
         step={1}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Master
+export default Master;

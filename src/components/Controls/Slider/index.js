@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { className } from 'utils';
 import styles from './Slider.module.scss';
@@ -14,7 +14,22 @@ const Slider = ({
   const [value, setValue] = useState(defaultVal);
   const fillRef = useRef();
   const fillWidth = useMemo(() => {
-    return { width: `${100 * value / max}%`, };
+    return {
+      width: `${
+        Math.min(
+          100,
+          (
+            // The width increases very slightly as the value decreases, in order
+            // to make up for a slight sift towards the middle that the thumb
+            // has as it nears either end. Without this, the shift would create a tiny
+            // gap between the tracker fill bar and the thumb as the value nears 0.
+            (100 * value / max)
+            + ((1.25 / Math.max(value, 1))
+            * step)
+          )
+        )
+      }%`,
+    };
   });
 
   const handleChange = e => {
@@ -25,15 +40,6 @@ const Slider = ({
 
   return (
     <div {...className(styles.sliderOuterWrapper, (value === min) && styles.minned, (value === max) && styles.maxxed)}>
-      <input
-          className={styles.value}
-          type="number"
-          max={max}
-          min={min}
-          onChange={handleChange}
-          value={value}
-          placeholder={value}
-        />
       <div className={styles.sliderInnerWrapper}>
         <span className={styles.fill} ref={fillRef} style={fillWidth}/>
         <input type="range"
@@ -45,8 +51,17 @@ const Slider = ({
           onChange={handleChange}
           step={step}
           value={value}
-          />
+        />
       </div>
+      <input
+          className={styles.value}
+          type="number"
+          max={max}
+          min={min}
+          onChange={handleChange}
+          value={value}
+          placeholder={value}
+        />
       <label className={styles.label} htmlFor={property}>{labelText}</label>
     </div>
   );
