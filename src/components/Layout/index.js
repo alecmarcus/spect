@@ -1,8 +1,8 @@
-import React from 'react'
-import { Route , Switch} from 'react-router-dom'
-import { Detail, Master, Axis, Field } from 'components'
-import { easeInOutQuad, easeInOutQuint } from 'utils'
-import styles from './layout.module.scss'
+import React from 'react';
+import { Route , Switch} from 'react-router-dom';
+import { Detail, Master, Axis, Field } from 'components';
+import { easeInOutQuad, easeInOutQuint } from 'utils';
+import styles from './layout.module.scss';
 
 const Layout = () => {
   return (
@@ -33,7 +33,7 @@ const Layout = () => {
         </Switch>
       </Detail>
     </main>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

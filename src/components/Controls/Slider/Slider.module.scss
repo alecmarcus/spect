@@ -1,0 +1,69 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/mixins/transitions';
+
+$track-height: 4px;
+$thumb-size: 3.5 * $track-height;
+
+.sliderWrapper {
+  display: flex;
+  position: relative;
+}
+
+.fill {
+  background-color: $ultramarine;
+  border-radius: 2px;
+  content: '';
+  height: $track-height;
+  position: absolute;
+  width: 100%;
+}
+
+.slider {
+  appearance: none;
+  background-color: white;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: grab;
+  height: $track-height;
+  margin: 0;
+  width: 100%;
+
+  &::-webkit-slider-thumb {
+    @include transition;
+    appearance: none;
+    background-color: currentColor;
+    border: 2px solid currentColor;
+    border-radius: 100%;
+    color: $ultramarine;
+    height: $thumb-size;
+    position: relative;
+    transform-origin: center;
+    width: $thumb-size;
+  }
+
+  &:active {
+    &::-webkit-slider-thumb {
+      border-width: 1.5px;
+      cursor: grabbing;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active,
+  &:hover {
+    &::-webkit-slider-thumb {
+      transform: scale(1.6);
+    }
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    &::-webkit-slider-thumb {
+      background-color: white;
+    }
+  }
+}

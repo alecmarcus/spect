@@ -18,8 +18,19 @@
     "es6": true
   },
   "rules": {
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "always",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
     "no-console": "off",
     "promise/prefer-await-to-then": "error",
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "\"", "}"] }]
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "\"", "}"] }],
+    "semi": 2
   }
 }

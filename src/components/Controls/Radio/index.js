@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import styles from './Radio.module.scss'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Radio.module.scss';
 
 const Radio = ({
     defaultVal,
@@ -8,11 +8,11 @@ const Radio = ({
     options,
     property,
   }) => {
-  const [value, setValue] = useState(defaultVal)
+  const [value, setValue] = useState(defaultVal);
 
   const handleChange = (e) => {
-    setValue(e.target.value)
-  }
+    setValue(e.target.value);
+  };
 
   return (
     <div>
@@ -31,7 +31,7 @@ const Radio = ({
         </div>)
       )}
     </div>
-  )
+  );
 };
 
 Radio.propTypes = {
@@ -43,6 +43,6 @@ Radio.propTypes = {
     valueText: PropTypes.string.isRequired,
   })),
   property: PropTypes.string.isRequired,
-}
+};
 
 export default Radio;

@@ -1,0 +1,13 @@
+@import '../variables/transitions';
+
+@mixin transition($duration: 150ms, $property: all, $func: $in-out-sine) {
+  $transitions: null;
+  @if type-of($property) != list {
+    $property: ($property);
+  }
+
+  @each $specifiedProperty in $property {
+    $transitions: append($transitions, $specifiedProperty $duration $func, comma);
+  }
+  transition: $transitions;
+}

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import styles from './Slider.module.scss'
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Slider.module.scss';
 
 const Slider = ({
     defaultVal,
@@ -10,25 +10,34 @@ const Slider = ({
     property,
     step,
   }) => {
-  const [value, setValue] = useState(defaultVal)
+  const [value, setValue] = useState(defaultVal);
+  const fillRef = useRef();
+  const fillWidth = useMemo(() => {
+    return { width: `${100 * value / max}%`, };
+  });
 
-  const handleChange = (e) => {
-    setValue(e.target.value)
-  }
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+
   return (
-    <div>
-      <input type="range"
-        id={property}
-        max={max}
-        min={min}
-        name={property}
-        onChange={handleChange}
-        step={step}
-        value={value}
-      />
+    <div >
+      <div className={styles.sliderWrapper}>
+        <span className={styles.fill} ref={fillRef} style={fillWidth}/>
+        <input type="range"
+          className={styles.slider}
+          id={property}
+          max={max}
+          min={min}
+          name={property}
+          onChange={handleChange}
+          step={step}
+          value={value}
+          />
+      </div>
       <label htmlFor={property}>{labelText}</label>
     </div>
-  )
+  );
 };
 
 Slider.propTypes = {
@@ -38,6 +47,6 @@ Slider.propTypes = {
   min: PropTypes.number.isRequired,
   property: PropTypes.string.isRequired,
   step: PropTypes.number.isRequired,
-}
+};
 
 export default Slider;

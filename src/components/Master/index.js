@@ -40,8 +40,32 @@ const Master = () => {
         }
         property={'someThings'}
       />
-      {/* <Select />
-      <Slider /> */}
+      <Select
+        defaultVal={'something'}
+        labelText={'More Things'}
+        options={
+          [
+            {
+              displayText: 'Something',
+              optValue: 'something',
+              valueText: 'something',
+            },
+            {
+              displayText: 'Another Thing',
+              optValue: 'anotherThing',
+            },
+          ]
+        }
+        property={'moreThings'}
+      />
+      <Slider
+        defaultVal={4}
+        labelText={'A range of things'}
+        max={10}
+        min={0}
+        property={'aRangeOfThings'}
+        step={1}
+      />
     </div>
   )
 }

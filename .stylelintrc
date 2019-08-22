@@ -2,7 +2,7 @@
   "extends": "stylelint-config-sass-guidelines",
   "rules": {
     "at-rule-empty-line-before": null,
-    "color-hex-length": "long",
+    "color-named": "always-where-possible",
     "declaration-empty-line-before": "never",
     "scss/dollar-variable-pattern": null,
     "scss/dollar-variable-colon-space-after": null,

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import styles from './Select.module.scss'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Select.module.scss';
 
 const Select = ({
     defaultVal,
@@ -9,11 +9,11 @@ const Select = ({
     options,
     property,
   }) => {
-  const [value, setValue] = useState(defaultVal)
+  const [value, setValue] = useState(defaultVal);
 
   const handleChange = (e) => {
-    setValue(e.target.value)
-  }
+    setValue(e.target.value);
+  };
   return (
     <div>
       <label htmlFor={property}>{labelText}</label>
@@ -23,7 +23,7 @@ const Select = ({
         ))}
       </select>
     </div>
-  )
+  );
 };
 
 Select.propTypes = {
@@ -34,6 +34,6 @@ Select.propTypes = {
     optValue: PropTypes.any.isRequired,
   })),
   property: PropTypes.string.isRequired,
-}
+};
 
 export default Select;
