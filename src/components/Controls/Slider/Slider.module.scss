@@ -1,21 +1,35 @@
-@import '../../../styles/variables/colors';
 @import '../../../styles/mixins/transitions';
+@import '../../../styles/functions/ms';
+@import '../../../styles/variables/colors';
 
 $track-height: 4px;
 $thumb-size: 3.5 * $track-height;
 
-.sliderWrapper {
-  display: flex;
-  position: relative;
-}
-
 .fill {
   background-color: $ultramarine;
-  border-radius: 2px;
+  border-radius: 2px 0 0 2px;
   content: '';
   height: $track-height;
   position: absolute;
   width: 100%;
+}
+
+.label {
+  flex: none;
+  width: 100%;
+}
+
+.maxxed {
+  .value {
+    background-color: $ultramarine;
+    color: white;
+  }
+}
+
+.minned {
+  .value {
+    background-color: $gray-30;
+  }
 }
 
 .slider {
@@ -48,10 +62,6 @@ $thumb-size: 3.5 * $track-height;
     }
   }
 
-  &:focus {
-    outline: 0;
-  }
-
   &:active,
   &:hover {
     &::-webkit-slider-thumb {
@@ -65,5 +75,45 @@ $thumb-size: 3.5 * $track-height;
     &::-webkit-slider-thumb {
       background-color: white;
     }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.sliderInnerWrapper {
+  display: flex;
+  flex: 2;
+  margin: ($thumb-size - $track-height) 0;
+  position: relative;
+}
+
+.sliderOuterWrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.value {
+  appearance: none;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  color: $black-coral;
+  flex: none;
+  font-size: ms(-1);
+  height: ms(2);
+  line-height: ms(1);
+  margin-right: ms(-2);
+  padding: 0 ms(-4) 0;
+  text-align: center;
+  width: ms(0);
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
   }
 }
