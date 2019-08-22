@@ -18,8 +18,8 @@ const Select = ({
     <div>
       <label htmlFor={property}>{labelText}</label>
       <select id={property} value={value} onChange={handleChange}>
-        {options.map(({ displayText, optValue }, i) => (
-          <option key={i} value={optValue} selected={(optValue === value) ? 'selected' : false}>{displayText}</option>
+        {options.map(({ displayText, optValue, }, i) => (
+          <option key={i} value={optValue}>{displayText}</option>
         ))}
       </select>
     </div>

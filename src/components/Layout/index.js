@@ -9,7 +9,8 @@ const Layout = () => {
     <main className={styles.main}>
       <Master />
       <Detail>
-        <Switch>
+        &nbsp;
+        {/* <Switch>
           <Route exact path='/' render={() => (
             <Axis
               qty={20}
@@ -30,7 +31,7 @@ const Layout = () => {
               widthEase={easeInOutQuint}
             />
           )}/>
-        </Switch>
+        </Switch> */}
       </Detail>
     </main>
   );

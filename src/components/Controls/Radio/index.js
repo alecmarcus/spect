@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { className } from 'utils';
 import styles from './Radio.module.scss';
 
 const Radio = ({
@@ -16,18 +17,19 @@ const Radio = ({
 
   return (
     <div>
-      <span>{labelText}</span>
-      {options.map(({ displayText, optValue, valueText }, i) => (
-        <div key={i}>
+      <span className={styles.groupLabel}>{labelText}</span>
+      {options.map(({ displayText, optValue, valueText, }, i) => (
+        <div key={i} {...className(styles.optionWrapper,  (optValue === value) && styles.selected)}>
           <input
-            checked={(optValue === value) ? 'checked' : false}
+            checked={optValue === value}
+            className={styles.dot}
             id={valueText}
             name={property}
             type="radio"
             value={optValue}
             onChange={handleChange}
           />
-          <label htmlFor={valueText}>{displayText}</label>
+          <label className={styles.optionLabel} htmlFor={valueText}>{displayText}</label>
         </div>)
       )}
     </div>

@@ -1,0 +1,53 @@
+@import '../../../styles/mixins/transitions';
+@import '../../../styles/functions/ms';
+@import '../../../styles/variables/colors';
+
+$dot-size: 4px;
+
+.dot,
+.optionLabel {
+  cursor: pointer;
+}
+
+.dot {
+  @include transition;
+  appearance: none;
+  background-color: white;
+  border-radius: $dot-size;
+  color: inherit;
+  flex: none;
+  height: $dot-size;
+  margin: 0 0 1px ms(-1);
+  position: absolute;
+  width: $dot-size;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.optionLabel {
+  color: white;
+  flex: 2;
+  padding: ms(-4) ms(-1) ms(-4) ms(2);
+}
+
+.optionWrapper {
+  @include transition;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  margin: ms(-4) 0;
+
+  &.selected {
+    background-color: currentColor;
+    color: $ultramarine;
+
+    .dot {
+      transform: scale(1.8);
+    }
+  }
+}
