@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { className } from 'utils';
 import styles from './Slider.module.scss';
@@ -9,6 +9,7 @@ const Slider = ({
     max,
     min,
     property,
+    reportValue,
     step,
   }) => {
   const [value, setValue] = useState(defaultVal);
@@ -37,6 +38,10 @@ const Slider = ({
     const cleanValue = inputValue > max ? max : inputValue < min ? min : inputValue;
     setValue(cleanValue);
   };
+
+  useEffect(() => {
+    reportValue(property, value);
+  }, [value]);
 
   return (
     <div {...className(styles.sliderOuterWrapper, (value === min) && styles.minned, (value === max) && styles.maxxed)}>
@@ -73,6 +78,7 @@ Slider.propTypes = {
   max: PropTypes.number.isRequired,
   min: PropTypes.number.isRequired,
   property: PropTypes.string.isRequired,
+  reportValue: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
 };
 

@@ -6,6 +6,12 @@ import styles from './master.module.scss';
 const Master = ({ children, }) => {
   const [state, setState] = useContext(ViewContext);
 
+  const updateContext = (property, value) => {
+    const update = {};
+    update[property] = value;
+    setState(state => ({ ...state, ...update, }));
+  };
+
   return (
     <div className={styles.master}>
       {children}
@@ -23,7 +29,7 @@ const Master = ({ children, }) => {
           </li>
         </ul>
       </nav> */}
-      {/* <Radio
+      <Radio
         defaultVal={'anotherThing'}
         labelText={'Some Things'}
         options={
@@ -41,6 +47,7 @@ const Master = ({ children, }) => {
           ]
         }
         property={'someThings'}
+        reportValue={updateContext}
       />
       <Select
         defaultVal={'something'}
@@ -59,6 +66,7 @@ const Master = ({ children, }) => {
           ]
         }
         property={'moreThings'}
+        reportValue={updateContext}
       />
       <Slider
         defaultVal={4}
@@ -66,14 +74,15 @@ const Master = ({ children, }) => {
         max={100}
         min={0}
         property={'aRangeOfThings'}
+        reportValue={updateContext}
         step={1}
-      /> */}
+      />
     </div>
   );
 };
 
 Master.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default Master;
