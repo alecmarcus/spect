@@ -13,7 +13,7 @@ $dot-size: 6px;
 .dot {
   @include transition;
   appearance: none;
-  background-color: white;
+  border: 1px solid white;
   border-radius: $dot-size;
   color: inherit;
   flex: none;
@@ -55,12 +55,16 @@ $dot-size: 6px;
   &:hover,
   &.selected {
     .dot {
-      transform: scale(2.25);
+      transform: scale(1.65);
     }
   }
 
   &.selected {
     background-color: currentColor;
     color: $ultramarine;
+
+    .dot {
+      background-color: white;
+    }
   }
 }

@@ -32,7 +32,7 @@ $option-padding: ms(-4) ms(-2) ms(-3);
       opacity,
       height,
     ),
-    $duration: 200ms
+    $duration: 150ms
   );
   @include ul-reset;
   background-color: white;
@@ -49,7 +49,7 @@ $option-padding: ms(-4) ms(-2) ms(-3);
 }
 
 .customOptionWrapper {
-  @include transition($property: top, $duration: 200ms);
+  @include transition($property: top, $duration: 150ms);
   height: ms(3);
   position: absolute;
   top: ms(3);
