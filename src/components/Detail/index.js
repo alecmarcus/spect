@@ -9,6 +9,7 @@ const Detail = ({ children, }) => {
     </section>
   );
 };
+
 Detail.propTypes = {
   children: PropTypes.node.isRequired,
 };

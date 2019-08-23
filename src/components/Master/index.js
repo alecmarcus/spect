@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Link, ViewContext, Radio, Select, Slider } from 'components';
+import PropTypes from 'prop-types';
+import { ViewContext, Radio, Select, Slider } from 'components';
 import styles from './master.module.scss';
 
-const Master = () => {
+const Master = ({ children, }) => {
   const [state, setState] = useContext(ViewContext);
 
   return (
     <div className={styles.master}>
-      <nav>
+      {children}
+      {/* <nav>
         <ul className={styles.pages}>
           <li>
             <Link to={'/'} activeClassName={styles.active}>
@@ -20,8 +22,8 @@ const Master = () => {
             </Link>
           </li>
         </ul>
-      </nav>
-      <Radio
+      </nav> */}
+      {/* <Radio
         defaultVal={'anotherThing'}
         labelText={'Some Things'}
         options={
@@ -65,9 +67,13 @@ const Master = () => {
         min={0}
         property={'aRangeOfThings'}
         step={1}
-      />
+      /> */}
     </div>
   );
+};
+
+Master.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Master;

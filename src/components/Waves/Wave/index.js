@@ -17,7 +17,7 @@ const colors = [
   "#4800d9"
 ];
 
-const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) => {
+const Wave = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) => {
   const canvasRef = useRef();
 
   const makeWaves = (maxShift) => {
@@ -56,9 +56,9 @@ const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) =
   );
 };
 
-export default Field;
+export default Wave;
 
-Field.propTypes = {
+Wave.propTypes = {
   qty: PropTypes.number.isRequired,
   yEase: PropTypes.func.isRequired,
   maxAmp: PropTypes.number.isRequired,
