@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { className } from 'utils';
 import styles from './Select.module.scss';
@@ -23,15 +23,12 @@ const Select = ({
 
   const handleChange = value => {
     setValue(value);
-  };
-
-  useEffect(() => {
     reportValue(property, value);
-  }, [value]);
+  };
 
   const listHeight = useMemo(() => {
     return { height: (isOpen === true ? `${options.length * OPTION_HEIGHT}rem` : `${OPTION_HEIGHT}rem`), };
-  });
+  }, [isOpen, options.length]);
 
   return (
     <div>
@@ -46,7 +43,12 @@ const Select = ({
           value={value}
         >
           {options.map(({ displayText, optValue, }, i) => (
-            <option className={styles.OSoption} key={`OSOption${i}`} value={optValue}>{displayText}</option>
+            <option
+              className={styles.OSoption}
+              key={`OSOption${i}`}
+              value={(typeof optValue === 'function') ? optValue.name : optValue}>
+                {displayText}
+            </option>
           ))}
         </select>
         <ul className={styles.customOptionList} style={listHeight}>

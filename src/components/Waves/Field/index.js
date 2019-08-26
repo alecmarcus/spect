@@ -17,15 +17,16 @@ const colors = [
   "#4800d9"
 ];
 
-const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) => {
+const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, maxShift, }) => {
   const canvasRef = useRef();
 
-  const makeWaves = (maxShift) => {
+  const makeWaves = (canvasWidth) => {
     let waves = [];
+    const maxShiftPct = maxShift / 100 * canvasWidth;
     for (let i = 0; i < qty; i++) {
       let wave = {};
       wave.strokeStyle = colors[i];
-      wave.shift = -1 * Math.round((maxShift * 2 * yEase(i / (qty - 1))) - maxShift);
+      wave.shift = -1 * Math.round((maxShiftPct * 2 * yEase(i / (qty - 1))) - maxShiftPct);
       wave.amplitude = maxAmp - Math.abs((Math.round((maxAmp * 2 * ampEase(i / (qty - 1))) - maxAmp)));
       wave.lineWidth = (maxWidth + 3) - Math.abs((Math.round((maxWidth * 2 * widthEase(i / (qty - 1))) - maxWidth)));
       wave.wavelength = wLength;
@@ -34,7 +35,7 @@ const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) =
     return waves;
   };
 
-  const initWaves = (maxShift) => {
+  let initWaves = () => {
     new SineWaves({
       el: canvasRef.current,
       width: canvasRef.current.getBoundingClientRect().width,
@@ -42,7 +43,7 @@ const Field = ({ qty, yEase, maxAmp, ampEase, wLength, maxWidth, widthEase, }) =
       speed: 2,
       rotate: 90,
       ease: 'SineInOut',
-      waves: makeWaves(maxShift),
+      waves: makeWaves(),
     });
   };
 
@@ -66,4 +67,5 @@ Field.propTypes = {
   wLength: PropTypes.number.isRequired,
   maxWidth: PropTypes.number.isRequired,
   widthEase: PropTypes.func.isRequired,
+  maxShift: PropTypes.func.isRequired,
 };

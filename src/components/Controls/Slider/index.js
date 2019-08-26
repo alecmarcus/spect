@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { className } from 'utils';
 import styles from './Slider.module.scss';
 
 const Slider = ({
+    className: customClassName,
     defaultVal,
     labelText,
     max,
@@ -31,20 +32,17 @@ const Slider = ({
         )
       }%`,
     };
-  });
+  }, [max, step, value]);
 
   const handleChange = e => {
     const inputValue = parseInt(e.target.value);
     const cleanValue = inputValue > max ? max : inputValue < min ? min : inputValue;
     setValue(cleanValue);
+    reportValue(property, value);
   };
 
-  useEffect(() => {
-    reportValue(property, value);
-  }, [value]);
-
   return (
-    <div {...className(styles.sliderOuterWrapper, (value === min) && styles.minned, (value === max) && styles.maxxed)}>
+    <div {...className(customClassName, styles.sliderOuterWrapper, (value === min) && styles.minned, (value === max) && styles.maxxed)}>
       <div className={styles.sliderInnerWrapper}>
         <span className={styles.fill} ref={fillRef} style={fillWidth}/>
         <input type="range"
@@ -73,6 +71,7 @@ const Slider = ({
 };
 
 Slider.propTypes = {
+  className: PropTypes.string,
   defaultVal: PropTypes.number.isRequired,
   labelText: PropTypes.string.isRequired,
   max: PropTypes.number.isRequired,

@@ -1,10 +1,21 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ViewContext, Radio, Select, Slider } from 'components';
+import { ViewContext, Slider } from 'components';
+// import { easeInOutCubic, easeInOutQuad, easeInOutQuint } from 'utils';
 import styles from './master.module.scss';
 
 const Master = ({ children, }) => {
   const [state, setState] = useContext(ViewContext);
+  // const [yEase, setYEase] = useState(state.yEase);
+  // const easings = [easeInOutCubic, easeInOutQuad, easeInOutQuint];
+
+  // const easingOpts = easings.map((easing, i) => (
+  //   {
+  //     displayText: easing.name,
+  //     optValue: () => easing,
+  //     valueText: easing.name,
+  //   }
+  // ));
 
   const updateContext = (property, value) => {
     const update = {};
@@ -29,7 +40,7 @@ const Master = ({ children, }) => {
           </li>
         </ul>
       </nav> */}
-      <Radio
+      {/* <Radio
         defaultVal={'anotherThing'}
         labelText={'Some Things'}
         options={
@@ -48,32 +59,61 @@ const Master = ({ children, }) => {
         }
         property={'someThings'}
         reportValue={updateContext}
-      />
-      <Select
-        defaultVal={'something'}
-        labelText={'More Things'}
-        options={
-          [
-            {
-              displayText: 'Something',
-              optValue: 'something',
-              valueText: 'something',
-            },
-            {
-              displayText: 'Another Thing',
-              optValue: 'anotherThing',
-            }
-          ]
-        }
-        property={'moreThings'}
+      /> */}
+      {/* <Select
+        defaultVal={() => state.yEase}
+        labelText={'Y Ease'}
+        options={easingOpts}
+        property={'yEase'}
         reportValue={updateContext}
-      />
-      <Slider
-        defaultVal={4}
-        labelText={'A range of things'}
+      /> */}
+      {/* <Slider
+        className={styles.slider}
+        defaultVal={state.maxShift}
+        labelText={'Spread Percent'}
         max={100}
         min={0}
-        property={'aRangeOfThings'}
+        property={'maxShift'}
+        reportValue={updateContext}
+        step={1}
+      /> */}
+      <Slider
+        className={styles.slider}
+        defaultVal={state.maxWidth}
+        labelText={'Stroke Max'}
+        max={50}
+        min={1}
+        property={'maxWidth'}
+        reportValue={updateContext}
+        step={1}
+      />
+      <Slider
+        className={styles.slider}
+        defaultVal={state.maxAmp}
+        labelText={'Amplitute Max'}
+        max={999}
+        min={1}
+        property={'maxAmp'}
+        reportValue={updateContext}
+        step={1}
+      />
+      <Slider
+        className={styles.slider}
+        defaultVal={state.qty}
+        labelText={'Quantity'}
+        max={20}
+        min={1}
+        property={'qty'}
+        reportValue={updateContext}
+        step={1}
+      />
+      <Slider
+        className={styles.slider}
+        defaultVal={state.wLength}
+        labelText={'Wavelength'}
+        max={999}
+        min={0}
+        property={'wLength'}
         reportValue={updateContext}
         step={1}
       />

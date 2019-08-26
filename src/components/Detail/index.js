@@ -1,17 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Wave } from 'components';
 import styles from './detail.module.scss';
 
-const Detail = ({ children, }) => {
+const Detail = () => {
   return (
     <section className={styles.detail}>
-      {children}
+      <Wave />
     </section>
   );
-};
-
-Detail.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Detail;
