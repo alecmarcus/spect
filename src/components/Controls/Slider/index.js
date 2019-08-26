@@ -35,14 +35,20 @@ const Slider = ({
   }, [max, step, value]);
 
   const handleChange = e => {
-    const inputValue = parseInt(e.target.value);
-    const cleanValue = inputValue > max ? max : inputValue < min ? min : inputValue;
-    setValue(cleanValue);
+    const parsedValue =
+      ('' === e.target.value || isNaN(e.target.value))
+      ? isNaN(value)
+        ? 0
+        : value
+      : parseInt(e.target.value);
+    const rangedValue = parsedValue > max ? max : parsedValue < min ? min : parsedValue;
+    setValue(rangedValue);
     reportValue(property, value);
   };
 
   return (
     <div {...className(customClassName, styles.sliderOuterWrapper, (value === min) && styles.minned, (value === max) && styles.maxxed)}>
+      <label className={styles.label} htmlFor={property}>{labelText}</label>
       <div className={styles.sliderInnerWrapper}>
         <span className={styles.fill} ref={fillRef} style={fillWidth}/>
         <input type="range"
@@ -65,7 +71,6 @@ const Slider = ({
           value={value}
           placeholder={value}
         />
-      <label className={styles.label} htmlFor={property}>{labelText}</label>
     </div>
   );
 };
