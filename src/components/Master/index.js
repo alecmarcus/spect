@@ -79,6 +79,16 @@ const Master = ({ children, }) => {
       /> */}
       <Slider
         className={styles.slider}
+        defaultVal={state.segmentLength}
+        labelText={'Segment Length'}
+        max={500}
+        min={0.1}
+        property={'segmentLength'}
+        reportValue={updateContext}
+        step={0.1}
+      />
+      <Slider
+        className={styles.slider}
         defaultVal={state.maxWidth}
         labelText={'Stroke Max'}
         max={50}
@@ -112,7 +122,7 @@ const Master = ({ children, }) => {
         defaultVal={state.wLength}
         labelText={'Wavelength'}
         max={999}
-        min={0}
+        min={1}
         property={'wLength'}
         reportValue={updateContext}
         step={1}

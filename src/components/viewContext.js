@@ -12,6 +12,7 @@ const makeWaves = source => {
     wave.amplitude = source.maxAmp - Math.abs((Math.round((source.maxAmp * 2 * source.ampEase(i / (source.qty - 1))) - source.maxAmp)));
     wave.lineWidth = (source.maxWidth + 3) - Math.abs((Math.round((source.maxWidth * 2 * source.widthEase(i / (source.qty - 1))) - source.maxWidth)));
     wave.wavelength = source.wLength;
+    wave.segmentLength = source.segmentLength;
     waves.push(wave);
   };
   return waves;
@@ -36,7 +37,8 @@ const ViewProvider = ({...props}) => {
     state.wLength,
     state.maxWidth,
     state.widthEase,
-    state.maxShift
+    state.maxShift,
+    state.segmentLength
   ]);
 
   return (

@@ -23,6 +23,7 @@ const defaults = {
   maxWidth: 20,
   widthEase: easeInOutQuint,
   maxShift: 100,
+  segmentLength: 20,
 };
 
 export default defaults;
