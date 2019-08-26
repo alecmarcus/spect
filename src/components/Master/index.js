@@ -81,7 +81,7 @@ const Master = ({ children, }) => {
         className={styles.slider}
         defaultVal={state.segmentLength}
         labelText={'Segment Length'}
-        max={500}
+        max={100}
         min={0.1}
         property={'segmentLength'}
         reportValue={updateContext}
@@ -92,16 +92,16 @@ const Master = ({ children, }) => {
         defaultVal={state.maxWidth}
         labelText={'Stroke Max'}
         max={50}
-        min={1}
+        min={0.1}
         property={'maxWidth'}
         reportValue={updateContext}
-        step={1}
+        step={0.1}
       />
       <Slider
         className={styles.slider}
         defaultVal={state.maxAmp}
         labelText={'Amplitute Max'}
-        max={999}
+        max={800}
         min={1}
         property={'maxAmp'}
         reportValue={updateContext}
