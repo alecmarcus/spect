@@ -1,3 +1,4 @@
+export { Axis, Field, Wave } from './Waves';
 export { default as Button } from './Button';
 export { default as Detail } from './Detail';
 export { default as Layout } from './Layout';

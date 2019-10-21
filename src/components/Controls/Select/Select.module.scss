@@ -52,7 +52,7 @@ $option-padding: ms(-4) ms(-2) ms(-3);
   @include transition($property: top, $duration: 150ms);
   height: ms(3);
   position: absolute;
-  // top: ms(3);
+  top: ms(3);
   width: 100%;
 
   &.selected {

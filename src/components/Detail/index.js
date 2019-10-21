@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
-import { ViewContext } from 'components';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './detail.module.scss';
 
-const Detail = () => {
-  const [state, setState] = useContext(ViewContext);
-  return <section className={styles.detail}>hi! testing: {state.ideasAndSolutions.level}</section>;
+const Detail = ({ children, }) => {
+  return (
+    <section className={styles.detail}>
+      {children}
+    </section>
+  );
+};
+
+Detail.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Detail;

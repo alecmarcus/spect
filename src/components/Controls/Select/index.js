@@ -11,7 +11,6 @@ const Select = ({
     labelText,
     options,
     property,
-    reportValue,
   }) => {
   const [value, setValue] = useState(defaultVal);
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +22,11 @@ const Select = ({
 
   const handleChange = value => {
     setValue(value);
-    reportValue(property, value);
   };
 
   const listHeight = useMemo(() => {
     return { height: (isOpen === true ? `${options.length * OPTION_HEIGHT}rem` : `${OPTION_HEIGHT}rem`), };
-  }, [isOpen, options.length]);
+  });
 
   return (
     <div>
@@ -43,12 +41,7 @@ const Select = ({
           value={value}
         >
           {options.map(({ displayText, optValue, }, i) => (
-            <option
-              className={styles.OSoption}
-              key={`OSOption${i}`}
-              value={(typeof optValue === 'function') ? optValue.name : optValue}>
-                {displayText}
-            </option>
+            <option className={styles.OSoption} key={`OSOption${i}`} value={optValue}>{displayText}</option>
           ))}
         </select>
         <ul className={styles.customOptionList} style={listHeight}>
@@ -73,7 +66,6 @@ Select.propTypes = {
     optValue: PropTypes.any.isRequired,
   })),
   property: PropTypes.string.isRequired,
-  reportValue: PropTypes.func.isRequired,
 };
 
 export default Select;
