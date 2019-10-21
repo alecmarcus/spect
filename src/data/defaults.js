@@ -1,29 +1,48 @@
-import { easeInOutQuad, easeInOutQuint } from 'utils';
-
-
 const defaults = {
-  colors: [
-    "#f5f7f4",
-    "#ddf7d3",
-    "#bff7b2",
-    "#98f791",
-    "#70f77f",
-    "#4ff689",
-    "#2ef5b2",
-    "#0de7f3",
-    "#007bee",
-    "#0012e5",
-    "#4800d9"
-  ],
-  qty: 11,
-  yEase: easeInOutQuad,
-  maxAmp: 500,
-  ampEase: easeInOutQuad,
-  wLength: 900,
-  maxWidth: 20,
-  widthEase: easeInOutQuint,
-  maxShift: 100,
-  segmentLength: 20,
+  ideasAndSolutions: {
+    displayText: 'Ideas & Solutions',
+    level: 1,
+  },
+  workQuality: {
+    displayText: 'Work Quality',
+    level: 1,
+  },
+  independence: {
+    displayText: 'Independence',
+    level: 1,
+  },
+  leadership: {
+    displayText: 'Leadership',
+    level: 1,
+  },
+  clientExperience: {
+    displayText: 'Client Experience',
+    level: 1,
+  },
+  teamCollaboration: {
+    displayText: 'Team Collaboration',
+    level: 1,
+  },
+  productivity: {
+    displayText: 'Productivity',
+    level: 1,
+  },
+  businessImpact: {
+    displayText: 'Business Impact',
+    level: 1,
+  },
+  providingOpportunities: {
+    displayText: 'Providing Opportunities',
+    level: 1,
+  },
+  givingFeedback: {
+    displayText: 'Giving Feedback',
+    level: 1,
+  },
+  listeningToOthers: {
+    displayText: 'Listening To Others',
+    level: 1,
+  },
 };
 
 export default defaults;
