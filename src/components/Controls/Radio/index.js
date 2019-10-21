@@ -8,13 +8,11 @@ const Radio = ({
     labelText,
     options,
     property,
-    reportValue,
   }) => {
   const [value, setValue] = useState(defaultVal);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValue(e.target.value);
-    reportValue(property, value);
   };
 
   return (
@@ -47,7 +45,6 @@ Radio.propTypes = {
     valueText: PropTypes.string.isRequired,
   })),
   property: PropTypes.string.isRequired,
-  reportValue: PropTypes.func.isRequired,
 };
 
 export default Radio;

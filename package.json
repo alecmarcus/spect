@@ -7,7 +7,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "sine-waves": "https://github.com/alecmarcus/sine-waves/tarball/master"
   },
   "scripts": {
     "start": "react-scripts start",
