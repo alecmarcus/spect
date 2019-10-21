@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { withRouter } from "react-router";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { defaults } from 'data';
 
 const ViewContext = React.createContext([{}, () => {}]);
 
-const ViewProvider = withRouter(({ location, ...props }) => {
-  const [state, setState] = useState({})
+const ViewProvider = ({ ...props }) => {
+  const [state, setState] = useState({ ...defaults, });
 
-  const syncView = targetView => setState(state => ({ ...state, view: targetView }))
+  return <ViewContext.Provider value={[state, setState]}>{props.children}</ViewContext.Provider>;
+};
 
-  useEffect(() => {
-    const pageName = location.pathname.replace(/\//g, '')
-    const viewName = pageName === '' ? 'home' : pageName
-
-    syncView(viewName)
-  }, [location.pathname])
-
-  return (
-    <ViewContext.Provider value={[state, setState]}>
-      {props.children}
-    </ViewContext.Provider>
-  );
-})
+ViewProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { ViewContext, ViewProvider };
