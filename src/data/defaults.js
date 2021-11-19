@@ -1,6 +1,5 @@
 import { easeInOutQuad, easeInOutQuint } from 'utils';
 
-
 const defaults = {
   colors: [
     "#f5f7f4",

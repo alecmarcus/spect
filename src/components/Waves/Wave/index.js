@@ -15,7 +15,7 @@ const Wave = () => {
         el: canvasRef.current,
         width: canvasRef.current.getBoundingClientRect().width,
         height: canvasRef.current.getBoundingClientRect().height,
-        speed: 2,
+        speed: 3,
         rotate: 90,
         ease: 'SineInOut',
         waves: state.waves,

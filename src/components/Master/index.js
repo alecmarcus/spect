@@ -6,16 +6,6 @@ import styles from './master.module.scss';
 
 const Master = ({ children, }) => {
   const [state, setState] = useContext(ViewContext);
-  // const [yEase, setYEase] = useState(state.yEase);
-  // const easings = [easeInOutCubic, easeInOutQuad, easeInOutQuint];
-
-  // const easingOpts = easings.map((easing, i) => (
-  //   {
-  //     displayText: easing.name,
-  //     optValue: () => easing,
-  //     valueText: easing.name,
-  //   }
-  // ));
 
   const updateContext = (property, value) => {
     const update = {};
@@ -26,57 +16,6 @@ const Master = ({ children, }) => {
   return (
     <div className={styles.master}>
       {children}
-      {/* <nav>
-        <ul className={styles.pages}>
-          <li>
-            <Link to={'/'} activeClassName={styles.active}>
-            Home
-            </Link>
-          </li>
-          <li>
-            <Link to={'/field'} activeClassName={styles.active}>
-            Field
-            </Link>
-          </li>
-        </ul>
-      </nav> */}
-      {/* <Radio
-        defaultVal={'anotherThing'}
-        labelText={'Some Things'}
-        options={
-          [
-            {
-              displayText: 'Something',
-              optValue: 'something',
-              valueText: 'something',
-            },
-            {
-              displayText: 'Another Thing',
-              optValue: 'anotherThing',
-              valueText: 'anotherThing',
-            }
-          ]
-        }
-        property={'someThings'}
-        reportValue={updateContext}
-      /> */}
-      {/* <Select
-        defaultVal={() => state.yEase}
-        labelText={'Y Ease'}
-        options={easingOpts}
-        property={'yEase'}
-        reportValue={updateContext}
-      /> */}
-      {/* <Slider
-        className={styles.slider}
-        defaultVal={state.maxShift}
-        labelText={'Spread Percent'}
-        max={100}
-        min={0}
-        property={'maxShift'}
-        reportValue={updateContext}
-        step={1}
-      /> */}
       <Slider
         className={styles.slider}
         defaultVal={state.segmentLength}
@@ -101,7 +40,7 @@ const Master = ({ children, }) => {
         className={styles.slider}
         defaultVal={state.maxAmp}
         labelText={'Amplitute Max'}
-        max={800}
+        max={1600}
         min={1}
         property={'maxAmp'}
         reportValue={updateContext}
@@ -111,7 +50,7 @@ const Master = ({ children, }) => {
         className={styles.slider}
         defaultVal={state.qty}
         labelText={'Quantity'}
-        max={20}
+        max={30}
         min={1}
         property={'qty'}
         reportValue={updateContext}
@@ -121,7 +60,7 @@ const Master = ({ children, }) => {
         className={styles.slider}
         defaultVal={state.wLength}
         labelText={'Wavelength'}
-        max={999}
+        max={1500}
         min={1}
         property={'wLength'}
         reportValue={updateContext}

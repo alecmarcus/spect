@@ -6,10 +6,19 @@
   background-color: $gray-80;
   box-sizing: border-box;
   color: white;
-  flex: 1;
   height: 100vh;
-  min-width: ms(13);
   padding: ms(3);
+  position: absolute;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+
+  // &:not(:hover) {
+  //   opacity: 0;
+
+  //   * {
+  //     pointer-events: none;
+  //   }
+  // }
 }
 
 .pages {
